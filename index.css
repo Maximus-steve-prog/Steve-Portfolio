@@ -974,7 +974,7 @@ section{
   top: 5%;
 
  
-  background-image: url('/images/hearth.png');
+  background-image: url('images/hearth.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
