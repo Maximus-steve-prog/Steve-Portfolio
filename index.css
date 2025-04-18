@@ -906,7 +906,7 @@ section{
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 1rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .hero_image{
@@ -974,7 +974,7 @@ section{
   top: 5%;
 
  
-  background-image: url('/images/hearth.png');
+  background-image: url('images/hearth.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -997,6 +997,9 @@ section{
 
 .hero_content{
   width: 100%;
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .hero_content h1{
@@ -1037,17 +1040,13 @@ section{
   /* text-align: ; */
 }
 
-.hero_content{
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
 
 .hero_content button{
   padding: .5rem 3rem;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--c-w);
+  margin-bottom: 1rem !important;
   background-color: var(--c-p-l);
   border-radius: 25px;
   box-shadow: 0  10px 20px rgba(0, 0, 0, 0.1);
@@ -1064,7 +1063,7 @@ section{
 
 .social_media{
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
 }
