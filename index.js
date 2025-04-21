@@ -54,26 +54,7 @@ $(document).ready(function() {
 
 
 
-    let section = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('.menu ul a');
-
-    document.querySelector('.container').onscroll = () => {
-        section.forEach(sec => {
-            let top = window.scrollY;
-            let height = sec.offsetHeight;
-            let offset = sec.offsetTop +150; // This adjusts for a possible fixed header
-            let id = sec.getAttribute('id');
-
-            // Corrected the conditional operator
-            if (top >= offset && top < offset + height) { 
-                navLinks.forEach(links => {
-                    links.classList.remove('active');
-                });
-                // Add active class to the corresponding nav link
-                document.querySelector(`.menu ul a[href*="${id}"]`).classList.add('active');                
-            }
-        });
-    };
+ 
 
 
 
@@ -103,30 +84,43 @@ $(document).ready(function() {
     
 
 
-    let items = document.querySelectorAll('.item');
-    let action = document.getElementById('action');
-
-
-    items.forEach(item => {
-        item.addEventListener('click', function(e){
-            if( this.classList.contains('active') || e.target.classList.contains('fa-chevron-down')){
-                return;
-            }
-            items.forEach(remove_active => {
-                remove_active.classList.remove('active');
-            });
-            this.classList.add('active');
-            document.documentElement.style.setProperty('--height-begin', action.offsetHeight + 'px');
-            document.documentElement.style.setProperty('--top-begin', action.offsetTop  + 'px');
-            document.documentElement.style.setProperty('--height-end', (this.offsetHeight +4) + 'px');
-            document.documentElement.style.setProperty('--top-end', (this.offsetTop -4)  + 'px');
-            action.classList.remove('runanimation');
-            void action.offsetWidth;
-            action.classList.add('runanimation');
-        },false)
-    });
-
-
+ let items = document.querySelectorAll('.item');
+ let action = document.getElementById('action');
+ 
+ items.forEach(item => {
+     item.addEventListener('click', function(e){
+         if( this.classList.contains('active') || e.target.classList.contains('fa-chevron-down')){
+             return;
+         }
+         items.forEach(remove_active => {
+             remove_active.classList.remove('active');
+         });
+         this.classList.add('active');
+         document.documentElement.style.setProperty('--height-begin', action.offsetHeight + 'px');
+         document.documentElement.style.setProperty('--top-begin', action.offsetTop  + 'px');
+         document.documentElement.style.setProperty('--height-end', (this.offsetHeight +4) + 'px');
+         document.documentElement.style.setProperty('--top-end', (this.offsetTop -4)  + 'px');
+         action.classList.remove('runanimation');
+         void action.offsetWidth;
+         action.classList.add('runanimation');
+     },false)
+ });
+ 
+ const sections = document.querySelectorAll('section');
+ 
+ function checkSections() {
+   sections.forEach((section) => {
+     const rect = section.getBoundingClientRect();
+     if (rect.top <= 150 && rect.bottom >= 150) {
+         section.classList.add('animate');
+     } else {
+       section.classList.remove('animate');
+     }
+   });
+   requestAnimationFrame(checkSections);
+ }
+ 
+ checkSections();
 
 
 
@@ -144,18 +138,5 @@ $(document).ready(function() {
        
 //     }, 10000);
 
-const sections = document.querySelectorAll('section');
 
-function checkSections() {
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top <= 150 && rect.bottom >= 150) {
-      section.classList.add('animate');
-    } else {
-      section.classList.remove('animate');
-    }
-  });
-  requestAnimationFrame(checkSections);
-}
 
-checkSections();

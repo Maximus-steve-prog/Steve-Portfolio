@@ -200,6 +200,7 @@
   padding: 0;
   text-decoration: none;
   transition: all 1s linear;
+  /* text-shadow: 1px -1px 1px var(--c-y); */
 }
 
 
@@ -859,10 +860,13 @@ ul li::before{
 .item.active i{
   color: #fff !important;
   transition: color 2s ease-in-out;
+  
 }
+
 .active span{
     color:var(--c-p-l);
     transition: color 2s ease-in-out;
+   
 }
 
 @keyframes animationaction{
@@ -1645,6 +1649,12 @@ svg{
 
 .relative {
   position: relative;
+}
+
+.contact button{
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  background-color: var(--c-p-l) !important;
 }
 
 #contact {
